@@ -10,8 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b0d12; --card:#121621; --muted:#8aa0b6; --text:#e8eef6; --accent:#2aa6ff; --accent-2:#00d4a6;
+      --bg:#0b0d12; --card:#121621; --muted:#8aa0b6; --text:#e8eef6; --accent:#2aa6ff; --accent-2:#00d4a6; --border:rgba(255,255,255,.08);
       --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --grad: linear-gradient(120deg, rgba(42,166,255,.35), rgba(0,212,166,.35));
     }
     *{box-sizing:border-box}
     body{margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:linear-gradient(180deg,#0b0d12,#0f1420); color:var(--text);}
@@ -21,7 +22,7 @@
     .wrap{max-width:1100px; margin:0 auto; padding:0 20px}
     .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
     .nav a.logo{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.2px}
-    .nav img{height:34px; width:auto}
+    .nav img{height:60px; width:auto}
     .nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
     .nav li a{color:var(--text); opacity:.9}
 
@@ -34,41 +35,28 @@
     .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:14px; border:1px solid rgba(255,255,255,.12); background:linear-gradient(180deg,#1b2333,#141a27); color:#fff; box-shadow:var(--shadow)}
     .btn.primary{background:linear-gradient(180deg,#2aa6ff,#2088d6); border-color:transparent}
     .btn.secondary{background:transparent}
-    .card{background:linear-gradient(180deg,#121621,#0e1220); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:18px; box-shadow:var(--shadow)}
+    .card{background:linear-gradient(180deg,#121621,#0e1220); border:1px solid var(--border); border-radius:16px; padding:18px; box-shadow:var(--shadow)}
 
     section{padding:42px 0}
-    h2{font-size:26px; margin:0 0 14px}
-    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
-    .grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
-    ul.clean{list-style:none; padding:0; margin:0}
-    ul.clean li{padding:10px 0; border-bottom:1px dashed rgba(255,255,255,.08)}
+    h2.section-title{font-size:28px; margin:0 0 18px; display:inline-flex; align-items:center; gap:10px}
+    .spark{width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 6px rgba(42,166,255,.18)}
 
-    .two-col{display:grid; grid-template-columns: 1fr 1fr; gap:24px}
-    .muted{color:var(--muted)}
-
-    footer{padding:32px 0 60px; color:var(--muted)}
-    footer .links{display:flex; gap:16px; flex-wrap:wrap}
-
-    @media (max-width: 900px){
-      .hero-inner{grid-template-columns:1fr}
-      .grid, .grid-2, .two-col{grid-template-columns:1fr}
-    }
+    #newsletter input, #newsletter button {font-size:15px;}
   </style>
 </head>
 <body>
   <header>
     <div class="wrap nav">
       <a class="logo" href="#">
-        <!-- Replace with your logo path -->
-        <img src="ieee-cs-il-logo2.png" alt="IEEE Computer Society Israel Chapter logo" style="height:70px;" />
+        <img src="ieee-cs-il-logo2.png" alt="IEEE Computer Society Israel Chapter logo" />
         <span>IEEE Computer Society – Israel Chapter</span>
       </a>
       <ul>
         <li><a href="#mission">Mission & Scope</a></li>
         <li><a href="#webinars">Webinars</a></li>
         <li><a href="#events">Events</a></li>
-        <li><a href="#join">Join</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#newsletter">Newsletter</a></li>
+        <li><a href="#contact">Contact & Committee</a></li>
       </ul>
     </div>
   </header>
@@ -81,126 +69,28 @@
           <h1>Advancing Computing Research, Practice, and Community in Israel</h1>
           <p class="lead">We connect researchers, practitioners, and students across academia and industry through talks, webinars, workshops, and collaborative initiatives in computer architecture, systems, AI/ML, and beyond.</p>
           <div class="cta">
-            <a class="btn primary" href="#webinars">Register for Upcoming Webinars</a>
+            <a class="btn primary" href="#newsletter">Join Our Mailing List</a>
             <a class="btn secondary" href="#mission">Read Our Mission</a>
           </div>
         </div>
-        <div class="card">
-          <h2>Next Webinar</h2>
-          <p class="muted" id="next-webinar-date">TBD</p>
-          <div id="next-webinar" class="muted">We will announce our next webinar soon. Stay tuned!</div>
-          <div class="cta" style="margin-top:12px">
-            <a class="btn" href="#webinars">See All Webinars</a>
+      </div>
+    </section>
+
+    <!-- Newsletter / Mailing List -->
+    <section id="newsletter">
+      <h2 class="section-title"><span class="spark"></span> Newsletter Signup</h2>
+      <div class="card" style="max-width:720px">
+        <p class="muted">Subscribe to receive updates about IEEE Computer Society Israel Chapter events, webinars, and workshops. You can unsubscribe at any time.</p>
+        <form action="https://formspree.io/f/xzzjvgbp" method="POST" id="subscribe-form">
+          <div style="display:grid; grid-template-columns:1.2fr .8fr; gap:10px; margin-top:10px">
+            <input name="email" type="email" required placeholder="you@example.com" aria-label="Email address" style="padding:12px 14px; border-radius:12px; border:1px solid var(--border); background:#0d1320; color:#fff">
+            <button class="btn primary" type="submit">Subscribe</button>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="mission" class="two-col">
-      <div>
-        <h2>Mission & Scope</h2>
-        <div class="card">
-          <p><strong>Mission.</strong> The IEEE Computer Society Israel Chapter advances the theory and practice of computing by fostering a vibrant community that spans academia and industry. We promote excellence in research, education, and professional development through technical events, knowledge exchange, and collaboration.</p>
-          <p><strong>Scope.</strong> Our activities cover computer architecture and systems, hardware/software co-design, AI and machine learning, programming models and compilers, security and privacy, and emerging application domains. We highlight local innovation while engaging with the global IEEE CS community.</p>
-          <p><strong>Objectives.</strong> (i) Curate high-quality talks and workshops; (ii) Enable student engagement and career development; (iii) Catalyze academia–industry partnerships; (iv) Support standards, open science, and responsible computing.</p>
-        </div>
-      </div>
-      <div>
-        <h2>Chapter Highlights</h2>
-        <div class="card">
-          <ul class="clean">
-            <li><strong>Webinars.</strong> Monthly talks by leaders from academia and industry.</li>
-            <li><strong>Workshops.</strong> Thematic half-day events co-located with major conferences.</li>
-            <li><strong>Student Programs.</strong> Mentoring, poster sessions, and skills clinics.</li>
-            <li><strong>Community.</strong> Networking meetups and cross-chapter collaborations.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="webinars">
-      <h2>Upcoming Webinars</h2>
-      <div class="grid" id="upcoming-webinars">
-        <!-- Add upcoming webinars here -->
-        <div class="card">
-          <h3>Title TBA</h3>
-          <p class="muted">Date • Speaker • Institution</p>
-          <p>Abstract coming soon.</p>
-          <p><a href="#">Registration link</a></p>
-        </div>
-        <div class="card">
-          <h3>Title TBA</h3>
-          <p class="muted">Date • Speaker • Institution</p>
-          <p>Abstract coming soon.</p>
-          <p><a href="#">Registration link</a></p>
-        </div>
-        <div class="card">
-          <h3>Title TBA</h3>
-          <p class="muted">Date • Speaker • Institution</p>
-          <p>Abstract coming soon.</p>
-          <p><a href="#">Registration link</a></p>
-        </div>
-      </div>
-
-      <h2 style="margin-top:36px">Past Webinars</h2>
-      <div class="grid-2" id="past-webinars">
-        <div class="card">
-          <h3>Blazingly Fast LLM Serving</h3>
-          <p class="muted">Baris Kasikci • University of Washington • 2025-10-18</p>
-          <p><a href="#">Slides</a> · <a href="#">Recording</a> · <a href="#">Abstract</a></p>
-        </div>
-        <div class="card">
-          <h3>Dynamic Multi-Precision for KV-Cache</h3>
-          <p class="muted">Maayan Ella • Technion • 2025-10-18</p>
-          <p><a href="#">Slides</a> · <a href="#">Recording</a> · <a href="#">Abstract</a></p>
-        </div>
-        <!-- Duplicate cards as needed -->
-      </div>
-    </section>
-
-    <section id="events">
-      <h2>Events</h2>
-      <div class="card">
-        <p>We host workshops and co-located events with leading conferences. To propose a topic or co-organize, <a href="#contact">contact the chapter</a>.</p>
-        <ul class="clean">
-          <li><strong>ReLAMP @ MICRO 2025</strong> — Efficient microarchitectures for resilient large-model processing. <a href="https://freddygabbay.github.io/ReLAMP-MICRO/" target="_blank" rel="noopener">Learn more</a>.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="join" class="two-col">
-      <div>
-        <h2>Join & Volunteer</h2>
-        <div class="card">
-          <p>Become part of the IEEE CS Israel Chapter community.</p>
-          <ul>
-            <li>Join IEEE and select the Computer Society (existing members can add the chapter in their profile).</li>
-            <li>Volunteer to help curate talks, review proposals, and mentor students.</li>
-            <li>Propose a webinar or workshop topic via the contact form below.</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <h2>Newsletter</h2>
-        <div class="card">
-          <p>Get updates about webinars and events.</p>
-          <form action="https://formspree.io/f/your-id" method="POST">
-            <label>Email<br><input name="email" type="email" required placeholder="you@example.com" style="width:100%; padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,.2); background:#0d1320; color:#fff"></label>
-            <input type="hidden" name="context" value="IEEE CS Israel Chapter">
-            <div class="cta" style="margin-top:12px">
-              <button class="btn primary" type="submit">Subscribe</button>
-            </div>
-            <p class="muted" style="font-size:12px">We use a simple form service; replace the action URL with your provider or GitHub Pages form handler.</p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="card">
-        <p>Email: <a href="mailto:ieee-cs-israel@example.org">ieee-cs-israel@example.org</a></p>
-        <p>Follow: <a href="#">LinkedIn</a> · <a href="#">YouTube</a> · <a href="#">Twitter/X</a></p>
+          <label style="display:block; margin-top:10px; font-size:12px; color:var(--muted)">
+            <input type="checkbox" required> I agree to receive chapter updates and understand I can unsubscribe anytime.
+          </label>
+          <p id="subscribe-status" class="muted" style="margin-top:8px; display:none"></p>
+        </form>
       </div>
     </section>
 
@@ -212,25 +102,32 @@
         <a href="#mission">Mission</a>
         <a href="#webinars">Webinars</a>
         <a href="#events">Events</a>
-        <a href="#join">Join</a>
-        <a href="#contact">Contact</a>
+        <a href="#newsletter">Newsletter</a>
+        <a href="#contact">Contact & Committee</a>
       </div>
-      <p style="margin-top:10px">© <span id="year"></span> IEEE Computer Society – Israel Chapter. IEEE and the IEEE logo are registered trademarks of The Institute of Electrical and Electronics Engineers, Inc.</p>
+      <p style="margin-top:10px">© <span id="year"></span> IEEE Computer Society – Israel Chapter.</p>
     </div>
   </footer>
 
   <script>
-    // Year stamp
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Example: populate next webinar from the first card in #upcoming-webinars
-    const firstUpcoming = document.querySelector('#upcoming-webinars .card');
-    if(firstUpcoming){
-      const title = firstUpcoming.querySelector('h3')?.textContent || 'TBA';
-      const meta  = firstUpcoming.querySelector('p.muted')?.textContent || '';
-      const link  = firstUpcoming.querySelector('a')?.getAttribute('href') || '#webinars';
-      document.getElementById('next-webinar').innerHTML = `<strong>${title}</strong><br>${meta}`;
-      document.getElementById('next-webinar-date').textContent = meta.split('•')[0] || 'TBD';
+    const form = document.getElementById('subscribe-form');
+    if(form){
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const status = document.getElementById('subscribe-status');
+        status.style.display = 'block';
+        status.textContent = 'Submitting…';
+        try{
+          const res = await fetch(form.action, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) });
+          if(res.ok){
+            status.textContent = 'Thanks! Please check your email to confirm your subscription.';
+            form.reset();
+          }else{
+            status.textContent = 'There was an issue subscribing. Please try again or email us.';
+          }
+        }catch(err){ status.textContent = 'Network error. Please try again later.'; }
+      });
     }
   </script>
 </body>
