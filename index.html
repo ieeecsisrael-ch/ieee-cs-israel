@@ -192,6 +192,11 @@
 <section id="events">
   <h2 class="section-title"><span class="spark"></span> Events</h2>
   <div class="card">
+    <a href="https://www.icsee2026.org" target="_blank" rel="noopener noreferrer" class="banner-link">
+      <img src="images/6f383a63-128d-41ff-b002-82d0029b95e3.png"
+           alt="IEEE Israel ICSEE 2026 Conference Banner"
+           class="event-banner">
+    </a>
     <p>
       <strong>Upcoming event:</strong>
       <a href="https://www.icsee2026.org" target="_blank" rel="noopener noreferrer" class="event-link">
@@ -207,6 +212,7 @@
 </section>
 
 <style>
+  /* Existing styles */
   .badge.new {
     background-color: #ff4757;
     color: #fff;
@@ -227,7 +233,28 @@
   .event-link:hover {
     text-decoration: underline;
   }
+
+  /* New banner styling */
+  .banner-link {
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .event-banner {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .event-banner:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  }
 </style>
+
 
     <!-- Newsletter -->
     <section id="newsletter">
